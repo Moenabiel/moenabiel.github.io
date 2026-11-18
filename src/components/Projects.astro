@@ -1,0 +1,86 @@
+---
+// Projects — the curated shelf. Real repos, real status, real stacks.
+const featured = [
+  {
+    name: 'quality-house-v4',
+    desc: 'The Consignment Dossier — portfolio-grade site for a Sudanese agricultural export house. Paper-and-ink motion physics, page-turn transitions, scroll-driven 360° gum-tree rotation, token-law CSS, axe-clean a11y.',
+    stack: 'astro · typescript · gsap · lenis',
+    status: 'active',
+  },
+  {
+    name: 'freellmapi',
+    desc: '16 free LLM providers behind one OpenAI-compatible endpoint — routing, streaming, fallbacks, Docker deploy.',
+    stack: 'node · typescript · docker',
+    status: 'active',
+  },
+  {
+    name: 'smt-lab',
+    desc: 'Smart Money Concepts backtesting research lab — event-driven fill simulation, walk-forward validation, Streamlit desktop app.',
+    stack: 'python · pandas · streamlit',
+    status: 'research',
+  },
+  {
+    name: 'memo-smt-ea',
+    desc: 'MetaTrader 5 EA framework — SMC entries, correlation engine, news-blackout scheduling, composable .mqh engines.',
+    stack: 'mql5 · metatrader 5',
+    status: 'research',
+  },
+  {
+    name: 'mimo-vscode',
+    desc: 'VS Code extension for AI-assisted coding — sidebar chat webview powered by MiMo (v0.1.0).',
+    stack: 'typescript · vscode api',
+    status: 'exp',
+  },
+  {
+    name: 'fable5-pipeline',
+    desc: 'ML model quantization and conversion pipeline with an ethics-first README.',
+    stack: 'python · ml tooling',
+    status: 'exp',
+  },
+];
+
+const archive = [
+  'quality-house-v1',
+  'quality-house-v2',
+  'quality-house-v3',
+  'motion-lab',
+  'highest-quality-agri',
+  'vintage-streetwear',
+  'SMT-Divergence-EA',
+];
+
+const statusChip: Record<string, { cls: string; label: string }> = {
+  active: { cls: 'chip-active', label: 'active' },
+  research: { cls: 'chip-research', label: 'research' },
+  exp: { cls: 'chip-exp', label: 'experimental' },
+};
+---
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <p class="kicker" data-reveal>~/projects — curated</p>
+    <h2 class="h2" data-reveal>Featured work</h2>
+
+    <div class="proj-grid">
+      {featured.map((p) => (
+        <article class="proj" data-reveal>
+          <div class="proj-head">
+            <h3 class="proj-name">
+              <a href={`https://github.com/Moenabiel/${p.name}`} rel="noopener">{p.name}</a>
+            </h3>
+            <span class={`chip ${statusChip[p.status].cls}`}>{statusChip[p.status].label}</span>
+          </div>
+          <p class="proj-desc">{p.desc}</p>
+          <p class="proj-stack">{p.stack}</p>
+        </article>
+      ))}
+    </div>
+
+    <p class="archive" data-reveal>
+      <span>archive:</span>
+      {archive.map((a) => (
+        <a href={`https://github.com/Moenabiel/${a}`} rel="noopener">{a}</a>
+      ))}
+    </p>
+  </div>
+</section>

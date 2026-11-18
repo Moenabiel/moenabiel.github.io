@@ -1,0 +1,37 @@
+---
+// Experiments — real sandbox work, honestly labeled.
+const experiments = [
+  {
+    name: 'motion-lab',
+    desc: 'Easing studies, scroll-behavior tests and reference shots in vanilla HTML/CSS/JS. Techniques that prove out here graduate into real builds.',
+    meta: 'sandbox · no framework · no build',
+  },
+  {
+    name: 'SMT-Divergence-EA',
+    desc: 'Composable MQL5 engines: SMT detection, liquidity, FVG, order blocks, market regime, confluence scoring — architecture as the experiment.',
+    meta: 'research · mql5 · xauusd/xagusd',
+  },
+  {
+    name: 'zero-leak publish pipeline',
+    desc: 'Gitleaks-gated git ops: every repo scanned (tree + history), forbidden paths blocked at stage, then published. The pipeline is the product.',
+    meta: 'tooling · gitleaks · gh cli',
+  },
+];
+---
+
+<section class="section" id="experiments">
+  <div class="wrap">
+    <p class="kicker" data-reveal>~/experiments</p>
+    <h2 class="h2" data-reveal>Experiments & labs</h2>
+
+    <div class="exp-grid">
+      {experiments.map((e) => (
+        <article class="exp" data-reveal>
+          <h3>{e.name}</h3>
+          <p>{e.desc}</p>
+          <p class="exp-meta">{e.meta}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

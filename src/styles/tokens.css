@@ -1,0 +1,81 @@
+/* tokens.css — the single source of color/motion truth.
+   LAW: no hex/rgb literals anywhere else in src/ (tools/check-tokens.mjs). */
+
+:root {
+  /* Surfaces */
+  --np-bg: #050708;
+  --np-bg-2: #090d0d;
+  --np-surface: #101515;
+
+  /* Accents */
+  --np-accent: #39f5b4;
+  --np-accent-2: #43e6d0;
+  --np-highlight: #a6ff4d;
+  --np-blue: #3e8bff;
+
+  /* Ink */
+  --np-text: #ffffff;
+  --np-muted: #8a9a9a;
+  --np-line: #1c2424;
+  --np-line-strong: #2a3535;
+
+  /* Status chips */
+  --np-status-active-bg: #0b2b21;
+  --np-status-active-line: #14402f;
+  --np-status-research-bg: #0a1626;
+  --np-status-research-line: #17304f;
+  --np-status-exp-bg: #20260e;
+  --np-status-exp-line: #3a4416;
+
+  /* Shadows */
+  --np-shadow-terminal: 0 24px 80px #00000066;
+
+  /* Typography */
+  --np-font-sans: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --np-font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', 'Cascadia Code',
+    Consolas, monospace;
+  --np-text-xs: 0.75rem;
+  --np-text-sm: 0.875rem;
+  --np-text-base: 1rem;
+  --np-text-lg: 1.125rem;
+  --np-text-xl: 1.375rem;
+  --np-text-2xl: 1.75rem;
+  --np-text-hero: clamp(2.75rem, 8vw, 5.5rem);
+
+  /* Space rhythm (4px base) */
+  --np-s1: 0.25rem;
+  --np-s2: 0.5rem;
+  --np-s3: 0.75rem;
+  --np-s4: 1rem;
+  --np-s6: 1.5rem;
+  --np-s8: 2rem;
+  --np-s12: 3rem;
+  --np-s16: 4rem;
+  --np-s24: 6rem;
+  --np-s32: 8rem;
+
+  /* Radii */
+  --np-r-sm: 4px;
+  --np-r-md: 8px;
+  --np-r-lg: 14px;
+
+  /* Motion */
+  --np-dur-fast: 160ms;
+  --np-dur-base: 280ms;
+  --np-dur-slow: 640ms;
+  --np-dur-terminal: 34ms;
+  --np-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --np-ease-snap: cubic-bezier(0.9, 0, 0.1, 1);
+
+  /* Z */
+  --np-z-nav: 50;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --np-dur-fast: 0ms;
+    --np-dur-base: 0ms;
+    --np-dur-slow: 0ms;
+    --np-dur-terminal: 0ms;
+  }
+}

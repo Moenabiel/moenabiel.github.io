@@ -1,0 +1,71 @@
+---
+// About + current focus. Real, honest, no seniority inflation.
+---
+
+<section class="section" id="about">
+  <div class="wrap">
+    <p class="kicker" data-reveal>~/about</p>
+    <h2 class="h2" data-reveal>What I build & why</h2>
+
+    <div class="about-grid">
+      <div class="about-copy" data-reveal>
+        <p>
+          I'm an <strong>independent developer</strong> building with AI as a
+          force multiplier, not a crutch: the sites here have their own design
+          systems and accessibility gates, the servers have real failure
+          handling, and the trading research refuses to claim performance it
+          hasn't proven.
+        </p>
+        <p>
+          My range runs from <strong>front-end motion engineering</strong>
+          (GSAP, Lenis, scroll choreography) through <strong>LLM
+          infrastructure</strong> (provider routing, OpenAI-compatible APIs) to
+          <strong>quantitative trading tools</strong> (MQL5, backtesting,
+          walk-forward validation). One builder, whole stack.
+        </p>
+        <p>
+          I work under a <strong>zero-leak policy</strong> — every repository on
+          this profile passed a Gitleaks secret scan before it was published.
+          Ambitious, but honest: each project is labeled with its true status.
+        </p>
+      </div>
+
+      <ul class="focus-list" data-reveal>
+        <li>
+          <span class="f-label">shipping</span>
+          <p>Quality House v4 — aliveness passes, Interlude page turns, scroll-driven tree rotation</p>
+        </li>
+        <li>
+          <span class="f-label">researching</span>
+          <p>SMC strategy robustness — walk-forward + real fill simulation before any live claim</p>
+        </li>
+        <li>
+          <span class="f-label">building</span>
+          <p>Free-LLM gateway — provider health checks, fallback chains, streaming correctness</p>
+        </li>
+        <li>
+          <span class="f-label">practicing</span>
+          <p>Zero-leak engineering — scanned, gated, verified git workflows</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- marquee: real project names, decorative-but-truthful rhythm -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {Array.from({ length: 2 }).map(() => (
+      <>
+        <span><span class="star">✦</span> quality-house-v4</span>
+        <span><span class="star">✦</span> freellmapi</span>
+        <span><span class="star">✦</span> smt-lab</span>
+        <span><span class="star">✦</span> memo-smt-ea</span>
+        <span><span class="star">✦</span> mimo-vscode</span>
+        <span><span class="star">✦</span> fable5-pipeline</span>
+        <span><span class="star">✦</span> motion-lab</span>
+        <span><span class="star">✦</span> gitleaks-gated</span>
+      </>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,24 @@
+---
+// Index — assembling the ship log.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import About from '../components/About.astro';
+import Experiments from '../components/Experiments.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Base
+  title="Nabiel — Independent AI Developer & Technology Builder"
+  description="Nabiel builds real systems with AI and automation: motion-engineered websites, an OpenAI-compatible gateway over 16 free LLM providers, SMC trading research, and VS Code tooling. Every repo Gitleaks-gated."
+>
+  <Nav />
+  <main id="main">
+    <Hero />
+    <Projects />
+    <About />
+    <Experiments />
+    <Contact />
+  </main>
+</Base>

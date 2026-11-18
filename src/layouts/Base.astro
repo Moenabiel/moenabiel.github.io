@@ -1,0 +1,64 @@
+---
+// Base layout — fonts, SEO, motion boot, no-js guard.
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import tokensCss from '../styles/tokens.css?raw';
+
+// Token law: theme color extracted from tokens.css — never a literal here.
+const themeColor = tokensCss.match(/--np-bg:\s*(#[0-9a-fA-F]{6})/)![1];
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content={themeColor} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      // .js gate: reveal from-states only apply when JS runs.
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <script src="../scripts/site.ts"></script>
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    inset-inline-start: var(--np-s4);
+    inset-block-start: calc(-1 * var(--np-s12));
+    z-index: calc(var(--np-z-nav) + 1);
+    background: var(--np-accent);
+    color: var(--np-bg);
+    font-family: var(--np-font-mono);
+    font-size: var(--np-text-sm);
+    padding: var(--np-s2) var(--np-s4);
+    border-radius: var(--np-r-sm);
+    transition: inset-block-start var(--np-dur-fast) var(--np-ease-out);
+  }
+
+  .skip-link:focus {
+    inset-block-start: var(--np-s4);
+    text-decoration: none;
+  }
+</style>
