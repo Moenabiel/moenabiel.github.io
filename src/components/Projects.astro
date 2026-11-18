@@ -26,10 +26,10 @@ const featured = [
     status: 'research',
   },
   {
-    name: 'mimo-vscode',
-    desc: 'VS Code extension for AI-assisted coding — sidebar chat webview powered by MiMo (v0.1.0).',
-    stack: 'typescript · vscode api',
-    status: 'exp',
+    name: 'SMT-Divergence-EA',
+    desc: 'MetaTrader 5 expert advisor — SMT divergence entries on XAUUSD with disciplined risk sizing.',
+    stack: 'mql5 · metatrader 5',
+    status: 'research',
   },
   {
     name: 'fable5-pipeline',
@@ -39,14 +39,13 @@ const featured = [
   },
 ];
 
-const archive = [
-  'quality-house-v1',
-  'quality-house-v2',
-  'quality-house-v3',
-  'motion-lab',
-  'highest-quality-agri',
-  'vintage-streetwear',
-  'SMT-Divergence-EA',
+const archive: Array<{ name: string; pub: boolean }> = [
+  { name: 'quality-house-v1', pub: false },
+  { name: 'quality-house-v2', pub: false },
+  { name: 'quality-house-v3', pub: false },
+  { name: 'motion-lab', pub: true },
+  { name: 'highest-quality-agri', pub: false },
+  { name: 'vintage-streetwear', pub: false },
 ];
 
 const statusChip: Record<string, { cls: string; label: string }> = {
@@ -78,9 +77,13 @@ const statusChip: Record<string, { cls: string; label: string }> = {
 
     <p class="archive" data-reveal>
       <span>archive:</span>
-      {archive.map((a) => (
-        <a href={`https://github.com/Moenabiel/${a}`} rel="noopener">{a}</a>
-      ))}
+      {archive.map((a) =>
+        a.pub ? (
+          <a href={`https://github.com/Moenabiel/${a.name}`} rel="noopener">{a.name}</a>
+        ) : (
+          <span class="archive-priv">{a.name}</span>
+        ),
+      )}
     </p>
   </div>
 </section>
