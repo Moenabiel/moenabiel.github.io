@@ -8,12 +8,6 @@ const featured = [
     status: 'active',
   },
   {
-    name: 'freellmapi',
-    desc: '16 free LLM providers behind one OpenAI-compatible endpoint — routing, streaming, fallbacks, Docker deploy.',
-    stack: 'node · typescript · docker',
-    status: 'active',
-  },
-  {
     name: 'smt-lab',
     desc: 'Smart Money Concepts backtesting research lab — event-driven fill simulation, walk-forward validation, Streamlit desktop app.',
     stack: 'python · pandas · streamlit',
@@ -32,20 +26,25 @@ const featured = [
     status: 'research',
   },
   {
-    name: 'fable5-pipeline',
-    desc: 'ML model quantization and conversion pipeline with an ethics-first README.',
-    stack: 'python · ml tooling',
+    name: 'mimo-vscode',
+    desc: "Xiaomi's MiMo Code snapshot (MIT) plus my own competitive analysis — a feature-gap matrix of MiMo Code against ten coding agents, with an authored architecture diagram.",
+    stack: 'typescript · react · research',
+    status: 'research',
+  },
+  {
+    name: 'vintage-streetwear',
+    desc: 'Brand identity and website build for VNTGE CULTURE — seven-token design system, two typefaces, CSS-drawn product art, plus the document pipeline behind it.',
+    stack: 'html · css · design system',
     status: 'exp',
   },
 ];
 
-const archive: Array<{ name: string; pub: boolean }> = [
+const more: Array<{ name: string; pub: boolean }> = [
+  { name: 'fable5-pipeline', pub: true },
+  { name: 'motion-lab', pub: true },
   { name: 'quality-house-v1', pub: false },
   { name: 'quality-house-v2', pub: false },
   { name: 'quality-house-v3', pub: false },
-  { name: 'motion-lab', pub: true },
-  { name: 'highest-quality-agri', pub: false },
-  { name: 'vintage-streetwear', pub: false },
 ];
 
 const statusChip: Record<string, { cls: string; label: string }> = {
@@ -76,8 +75,8 @@ const statusChip: Record<string, { cls: string; label: string }> = {
     </div>
 
     <p class="archive" data-reveal>
-      <span>archive:</span>
-      {archive.map((a) =>
+      <span>more:</span>
+      {more.map((a) =>
         a.pub ? (
           <a href={`https://github.com/Moenabiel/${a.name}`} rel="noopener">{a.name}</a>
         ) : (
