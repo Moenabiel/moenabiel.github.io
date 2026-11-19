@@ -1,0 +1,68 @@
+---
+// Artifacts — the three things worth looking at that aren't prose:
+// two hand-authored architecture diagrams and one live build.
+// Full-width plates: the diagrams are dense, so they get the whole measure.
+const artifacts = [
+  {
+    index: '01',
+    title: 'MiMo Code — extension architecture',
+    desc: 'How the VS Code extension spawns the MiMo headless server, streams over SSE, and gates every tool call through an approval queue. The green panel marks the part that is mine: the feature-gap analysis, not the upstream code.',
+    meta: 'docs/architecture.svg · mimo-vscode',
+    href: 'https://github.com/Moenabiel/mimo-vscode/blob/main/docs/architecture.svg',
+    src: '/artifacts/mimo-architecture.svg',
+    alt: 'Architecture diagram: the VS Code extension host spawns the MiMo headless server over HTTP and SSE; the webview renders chat and the tool-approval queue; a green panel marks the author’s own gap analysis.',
+    ratio: '960 / 580',
+  },
+  {
+    index: '02',
+    title: 'MEMO XAU/XAG — signal pipeline',
+    desc: 'Twelve ordered steps from liquidity map to execution, plus the manager layer underneath. The green steps are veto gates: they can only block a trade, never force one.',
+    meta: 'docs/architecture.svg · memo-smt-ea',
+    href: 'https://github.com/Moenabiel/memo-smt-ea/blob/main/docs/architecture.svg',
+    src: '/artifacts/memo-architecture.svg',
+    alt: 'Architecture diagram: twelve-step trading pipeline from liquidity maps through SMT detection, correlation, session and news gates, market structure, scoring and risk controls, above a manager layer.',
+    ratio: '960 / 660',
+  },
+  {
+    index: '03',
+    title: 'VNTGE CULTURE — live build',
+    desc: 'The brand site as served: seven tokens, two self-hosted typefaces, ten hand-drawn garment glyphs, zero raster product art — and zero axe violations at 1440 and 390.',
+    meta: 'website/index.html · vintage-streetwear',
+    href: 'https://github.com/Moenabiel/vintage-streetwear',
+    src: '/artifacts/streetwear-preview.png',
+    alt: 'Screenshot of the VNTGE CULTURE brand site: gold wordmark on warm black, a hairline kicker reading Vintage Streetwear SS26 Concept, the headline Wear the Legacy, and a three-figure build stat band.',
+    ratio: '1440 / 900',
+  },
+];
+---
+
+<section class="section" id="artifacts">
+  <div class="wrap">
+    <p class="kicker" data-reveal>~/artifacts</p>
+    <h2 class="h2" data-reveal>Diagrams &amp; builds</h2>
+    <p class="lede" data-reveal>
+      Three artifacts from the work above — two architecture diagrams I drew by hand and one
+      build running in a browser. No stock imagery, no template mockups.
+    </p>
+
+    <div class="artifact-list">
+      {artifacts.map((a) => (
+        <article class="artifact" data-reveal>
+          <a class="artifact-media" href={a.href} rel="noopener" style={`--artifact-ratio: ${a.ratio}`}>
+            <img src={a.src} alt={a.alt} loading="lazy" decoding="async" />
+          </a>
+          <div class="artifact-body">
+            <div class="artifact-head">
+              <span class="artifact-index">{a.index}</span>
+              <h3 class="artifact-title">
+                <a href={a.href} rel="noopener">{a.title}</a>
+              </h3>
+              <p class="artifact-meta">{a.meta}</p>
+            </div>
+            <p class="artifact-desc">{a.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

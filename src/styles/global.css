@@ -1,4 +1,4 @@
-/* global.css — base, layout primitives, sections, states.
+﻿/* global.css â€” base, layout primitives, sections, states.
    Motion contract: everything animated lives behind .js and
    prefers-reduced-motion kills all of it (tokens collapse durations to 0). */
 
@@ -629,12 +629,121 @@ a:hover {
    actually boots, then reveals on IntersectionObserver. No-JS and JS-failure
    both leave the page fully visible. */
 
+/* ---------- Artifacts ---------- */
+/* Full-width plates: each diagram is dense, so it gets the whole measure. */
+.artifact-list {
+  display: grid;
+  gap: var(--np-s12);
+  margin-block-start: var(--np-s8);
+}
+
+.artifact {
+  display: grid;
+  gap: var(--np-s4);
+}
+
+.artifact-media {
+  display: block;
+  overflow: clip;
+  border: 1px solid var(--np-line-strong);
+  border-radius: var(--np-r-md);
+  background: var(--np-bg);
+  aspect-ratio: var(--artifact-ratio, 16 / 10);
+  transition: border-color var(--np-dur-base) var(--np-ease-out);
+}
+
+.artifact-media img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+  transition: transform var(--np-dur-slow) var(--np-ease-out);
+}
+
+.artifact-media:hover {
+  border-color: var(--np-accent);
+}
+
+.artifact-media:hover img {
+  transform: scale(1.012);
+}
+
+.artifact-body {
+  display: grid;
+  gap: var(--np-s2);
+}
+
+.artifact-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--np-s2) var(--np-s4);
+}
+
+.artifact-index {
+  font-family: var(--np-font-mono);
+  font-size: var(--np-text-xs);
+  color: var(--np-muted);
+  letter-spacing: 0.08em;
+}
+
+.artifact-title {
+  font-family: var(--np-font-mono);
+  font-size: var(--np-text-base);
+  font-weight: 700;
+  margin: 0;
+}
+
+.artifact-title a {
+  color: var(--np-text);
+}
+
+.artifact-title a:hover {
+  color: var(--np-accent);
+  text-decoration: none;
+}
+
+.artifact-meta {
+  margin: 0;
+  font-family: var(--np-font-mono);
+  font-size: var(--np-text-xs);
+  color: var(--np-accent-2);
+  letter-spacing: 0.04em;
+}
+
+.artifact-desc {
+  margin: 0;
+  color: var(--np-muted);
+  font-size: var(--np-text-sm);
+  max-inline-size: 78ch;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .proj-grid,
   .exp-grid,
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .artifact-list {
+    gap: var(--np-s8);
+  }
+
+  /* Long titles wrap; keep the index and the file path on one line above them. */
+  .artifact-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    row-gap: var(--np-s1);
+  }
+
+  .artifact-title {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .artifact-meta {
+    justify-self: end;
   }
 
   .hero {

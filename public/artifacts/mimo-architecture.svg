@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="960" height="580" role="img" aria-label="MiMo Code VS Code extension architecture: the extension host spawns the MiMo headless server over HTTP and SSE, the server streams to the webview, and the author's original contribution is the competitive gap analysis.">
+  <style>
+    .bg { fill: #050708; }
+    .panel { fill: #101515; stroke: #233131; stroke-width: 1; }
+    .mine { fill: #0d1a16; stroke: #39F5B4; stroke-width: 1.5; }
+    .box { fill: #131b1b; stroke: #2b3a3a; stroke-width: 1; }
+    .h { font: 600 15px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #ffffff; }
+    .h2 { font: 600 14px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #e8f3f1; }
+    .t { font: 400 12.5px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #8a9a9a; }
+    .tm { font: 400 12.5px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #39F5B4; }
+    .tu { font: 400 12.5px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #43e6d0; }
+    .lbl { font: 400 11.5px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #8a9a9a; }
+    .lblm { font: 400 11.5px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #39f5b4; }
+    .gap { font: 400 9.5px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #566b6b; letter-spacing: 0.04em; }
+    .arrow { stroke: #566b6b; stroke-width: 1.4; fill: none; marker-end: url(#head); }
+  </style>
+
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#566b6b" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="960" height="580" rx="10" />
+
+  <text class="h" x="40" y="46">MiMo Code — VS Code extension · v0.1.0 snapshot architecture</text>
+  <text class="t" x="40" y="68">Mirrored pre-release extension stage (Xiaomi, MIT) · my contribution: the competitive analysis</text>
+
+  <!-- Panel A: extension host -->
+  <rect class="panel" x="40" y="92" width="258" height="244" rx="8" />
+  <text class="h2" x="58" y="118">VS Code Extension Host</text>
+  <text class="lbl" x="58" y="136">src/ · TypeScript 5.3</text>
+
+  <rect class="box" x="58" y="150" width="222" height="40" rx="6" />
+  <text class="tu" x="70" y="166">extension.ts</text>
+  <text class="t" x="70" y="182">activation on startup</text>
+
+  <rect class="box" x="58" y="198" width="222" height="40" rx="6" />
+  <text class="tu" x="70" y="214">CliManager</text>
+  <text class="t" x="70" y="230">spawn · HTTP + SSE</text>
+
+  <rect class="box" x="58" y="246" width="222" height="40" rx="6" />
+  <text class="tu" x="70" y="262">SessionManager · StatusBar</text>
+  <text class="t" x="70" y="278">switch · export · clear</text>
+
+  <rect class="box" x="58" y="294" width="222" height="30" rx="6" />
+  <text class="tu" x="70" y="314">CodeActionProvider</text>
+
+  <!-- Panel B: headless server -->
+  <rect class="panel" x="332" y="92" width="262" height="244" rx="8" />
+  <text class="h2" x="350" y="118">MiMo Code headless server</text>
+  <text class="lbl" x="350" y="136">local process · JSON over HTTP</text>
+
+  <rect class="box" x="350" y="150" width="226" height="40" rx="6" />
+  <text class="tu" x="362" y="166">spawned by CliManager</text>
+  <text class="t" x="362" y="182">process lifecycle</text>
+
+  <rect class="box" x="350" y="198" width="226" height="40" rx="6" />
+  <text class="tu" x="362" y="214">HTTP + SSE transport</text>
+  <text class="t" x="362" y="230">streamed JSON events</text>
+
+  <rect class="box" x="350" y="246" width="226" height="40" rx="6" />
+  <text class="tu" x="362" y="262">Model routing</text>
+  <text class="t" x="362" y="278">Auto or OpenAI-compatible</text>
+
+  <text class="lbl" x="350" y="318">pre-release stage · not upstream work</text>
+
+  <!-- Panel C: webview -->
+  <rect class="panel" x="628" y="92" width="292" height="244" rx="8" />
+  <text class="h2" x="646" y="118">Webview</text>
+  <text class="lbl" x="646" y="136">webview/ · React 18 + esbuild</text>
+
+  <rect class="box" x="646" y="150" width="256" height="40" rx="6" />
+  <text class="tu" x="658" y="166">ChatPanel · MessageList</text>
+  <text class="t" x="658" y="182">streamed markdown output</text>
+
+  <rect class="box" x="646" y="198" width="256" height="40" rx="6" />
+  <text class="tu" x="658" y="214">ApprovalBar</text>
+  <text class="t" x="658" y="230">tool calls: approve / reject</text>
+
+  <rect class="box" x="646" y="246" width="256" height="40" rx="6" />
+  <text class="tu" x="658" y="262">SettingsPanel</text>
+  <text class="t" x="658" y="278">path · model · auto-approve</text>
+
+  <rect class="box" x="646" y="294" width="256" height="30" rx="6" />
+  <text class="tu" x="658" y="314">hooks/useVSCode · event bridge</text>
+
+  <!-- Flow: host -> server -> webview, and the postMessage return path -->
+  <path class="arrow" d="M 298 220 L 330 220" />
+  <path class="arrow" d="M 594 220 L 626 220" />
+  <path class="arrow" d="M 774 336 L 774 352 L 169 352 L 169 338" />
+  <text class="gap" x="471" y="368" text-anchor="middle">postMessage · approvals</text>
+
+  <!-- Panel D: my work -->
+  <rect class="mine" x="332" y="392" width="588" height="160" rx="8" />
+  <text class="h2" x="350" y="418">My original work in this repo — Nabiel</text>
+
+  <rect class="box" x="350" y="430" width="552" height="44" rx="6" />
+  <text class="tm" x="362" y="447">docs/MIMO_CODE_FEATURE_GAP_ANALYSIS.md</text>
+  <text class="tm" x="362" y="463">gap matrix vs 10 coding agents (2026-07-25)</text>
+
+  <rect class="box" x="350" y="480" width="552" height="30" rx="6" />
+  <text class="tm" x="362" y="500">README — eval notes · install &amp; packaging · attribution</text>
+
+  <rect class="box" x="350" y="516" width="552" height="22" rx="6" />
+  <text class="t" x="362" y="532">© 2026 Xiaomi MiMo · MIT · upstream: XiaomiMiMo/MiMo-Code</text>
+
+  <!-- Legend -->
+  <rect x="40" y="392" width="14" height="14" rx="3" fill="#0d1a16" stroke="#39f5b4" stroke-width="1.5" />
+  <text class="lblm" x="62" y="404">my work</text>
+  <rect x="40" y="416" width="14" height="14" rx="3" fill="#131b1b" stroke="#2b3a3a" stroke-width="1" />
+  <text class="lbl" x="62" y="428">upstream (Xiaomi · MIT)</text>
+
+  <text class="lbl" x="40" y="470">Upstream restructured to a Bun CLI</text>
+  <text class="lbl" x="40" y="488">(2,079 files, 2026-11-18); this mirror</text>
+  <text class="lbl" x="40" y="506">is kept for evaluation, not active work.</text>
+</svg>
