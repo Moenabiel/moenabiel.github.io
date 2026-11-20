@@ -2,6 +2,7 @@
 // Nav — fixed console rail. Real links only.
 const links = [
   { href: '#projects', label: 'projects' },
+  { href: '#artifacts', label: 'artifacts' },
   { href: '#about', label: 'about' },
   { href: '#experiments', label: 'experiments' },
   { href: '#contact', label: 'contact' },
@@ -15,11 +16,20 @@ const links = [
       nabiel<span style="color: var(--np-accent)">@</span>github
     </a>
     <nav aria-label="Primary">
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         {links.map((l) => (
           <li><a href={l.href}>{l.label}</a></li>
         ))}
       </ul>
     </nav>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="nav-links"
+      aria-label="Open menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>

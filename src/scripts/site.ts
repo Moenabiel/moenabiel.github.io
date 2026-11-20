@@ -11,6 +11,16 @@
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* Nav disclosure runs before the motion boot: it must work under reduced motion
+   and must not depend on GSAP or Lenis loading. */
+try {
+  setupNav();
+} catch (err) {
+  document.documentElement.classList.remove('js');
+  // eslint-disable-next-line no-console
+  console.error('nav setup failed; static fallback', err);
+}
+
 try {
   if (!reduced) {
     boot();
@@ -24,6 +34,40 @@ try {
   document.documentElement.classList.remove('js');
   // eslint-disable-next-line no-console
   console.error('motion boot failed; static fallback', err);
+}
+
+/* Mobile nav disclosure: aria-expanded toggles, Escape closes and returns focus,
+   a link tap closes, and returning to desktop resets the state. */
+function setupNav(): void {
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (!toggle || !links) return;
+
+  const setOpen = (open: boolean): void => {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) links.setAttribute('data-open', 'true');
+    else links.removeAttribute('data-open');
+  };
+
+  toggle.addEventListener('click', () => {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  links.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('a')) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  window.matchMedia('(min-width: 641px)').addEventListener('change', (event) => {
+    if (event.matches) setOpen(false);
+  });
 }
 
 function boot(): void {

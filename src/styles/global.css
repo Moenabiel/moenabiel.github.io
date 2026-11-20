@@ -167,6 +167,46 @@ a:hover {
   text-decoration: none;
 }
 
+/* Mobile disclosure — hidden until the breakpoint, and only when JS can run it. */
+.nav-toggle {
+  display: none;
+  inline-size: 40px;
+  block-size: 38px;
+  padding: 11px 10px;
+  background: none;
+  border: 1px solid var(--np-line-strong);
+  border-radius: var(--np-r-sm);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.nav-toggle span {
+  display: block;
+  block-size: 1px;
+  inline-size: 100%;
+  background: var(--np-text);
+  transition:
+    transform var(--np-dur-fast) var(--np-ease-out),
+    opacity var(--np-dur-fast) var(--np-ease-out);
+}
+
+.nav-toggle span + span {
+  margin-block-start: 5px;
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 /* ---------- Hero ---------- */
 .hero {
   min-block-size: 100svh;
@@ -753,6 +793,42 @@ a:hover {
 }
 
 @media (max-width: 640px) {
+  .js .nav-toggle {
+    display: flex;
+  }
+
+  .js .nav-links {
+    position: fixed;
+    inset-block-start: 60px;
+    inset-inline: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: var(--np-s2) var(--np-s6) var(--np-s4);
+    /* Solid, not translucent: a nested backdrop-filter inside the blurred
+       header does not composite the way it reads, and the hero ghosted through. */
+    background: var(--np-bg);
+    border-block-end: 1px solid var(--np-line-strong);
+    box-shadow: var(--np-shadow-terminal);
+  }
+
+  .js .nav-links[data-open='true'] {
+    display: flex;
+  }
+
+  .js .nav-links li {
+    border-block-end: 1px solid var(--np-line);
+  }
+
+  .js .nav-links li:last-child {
+    border-block-end: 0;
+  }
+
+  .js .nav-links a {
+    display: block;
+    padding-block: var(--np-s3);
+  }
+
   .nav-links {
     display: none;
   }
